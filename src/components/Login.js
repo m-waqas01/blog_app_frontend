@@ -7,7 +7,9 @@ const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL ||
+    "https://waqas-blog-app-backend.vercel.app/api";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,12 +44,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-[#e3dac9]">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg w-96"
+        className="bg-[#d1bea8] p-6 rounded-lg shadow-lg w-96"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-700">
+        <h2 className="text-2xl font-bold mb-6 text-center text-[#918151]">
           Login
         </h2>
 
@@ -55,7 +57,7 @@ const Login = () => {
           type="email"
           name="email"
           placeholder="Email"
-          className="w-full border p-3 mb-3 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="w-full border border-[#8a795d] bg-[#c3b091] rounded-md p-3 mb-3 text-[#8a795d] placeholder-[#8a795d]/60 focus:outline-none focus:ring-2 focus:ring-[#8a795d]"
           value={formData.email}
           onChange={handleChange}
           required
@@ -65,7 +67,7 @@ const Login = () => {
           type="password"
           name="password"
           placeholder="Password"
-          className="w-full border p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="w-full border border-[#8a795d] bg-[#c3b091] rounded-md p-3 mb-3 text-[#8a795d] placeholder-[#8a795d]/60 focus:outline-none focus:ring-2 focus:ring-[#8a795d]"
           value={formData.password}
           onChange={handleChange}
           required
@@ -73,7 +75,7 @@ const Login = () => {
 
         <button
           type="submit"
-          className="bg-green-600 text-white px-4 py-2 rounded w-full hover:bg-green-700 transition duration-200"
+          className="w-full bg-[#918151] border border-[#918151] font-serif px-4 py-2 rounded hover:bg-[#856d4d] hover:text-gray-200 text-white text-center transition duration-700 ease-in-out"
         >
           Login
         </button>
@@ -81,7 +83,7 @@ const Login = () => {
           Don't already have an account,{" "}
           <Link
             to={"/signup"}
-            className="hover:text-[#918151] text-[#856d4d] underline"
+            className="text-[#918151] hover:text-[#856d4d] underline"
           >
             Register
           </Link>

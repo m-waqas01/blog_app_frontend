@@ -31,8 +31,8 @@ const Header = () => {
       <div className="container mx-auto max-w-[1200px] flex items-center justify-between py-4 px-6">
         <div className="flex items-center">
           <Link to={"/"}>
-            <h1 className="font-bold">
-              My <span className="text-[#918151]">Blog's</span>
+            <h1 className="font-medium font-serif text-2xl">
+              Blog <span className="text-[#918151]">Sphere</span>
             </h1>
           </Link>
         </div>
@@ -98,7 +98,7 @@ const Header = () => {
 
           <Link
             to={"/signup"}
-            className="mt-4 border border-[#918151] font-serif px-4 py-2 rounded hover:bg-[#856d4d] hover:text-white text-center transition duration-700 ease-in-out"
+            className=" border border-[#918151] font-serif px-4 py-2 rounded hover:bg-[#856d4d] hover:text-white text-center transition duration-700 ease-in-out"
           >
             Get Started
           </Link>

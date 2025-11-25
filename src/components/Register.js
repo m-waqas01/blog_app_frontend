@@ -13,7 +13,8 @@ const Register = () => {
 
   // Automatically switch between local and deployed backend
   const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api";
+    process.env.REACT_APP_API_BASE_URL ||
+    "https://waqas-blog-app-backend.vercel.app/api";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,11 +40,11 @@ const Register = () => {
         localStorage.setItem("refreshToken", refreshToken);
         localStorage.setItem("user", JSON.stringify(user));
 
-        alert("✅ Registration successful!");
+        alert(" Registration successful!");
         navigate("/login");
       } else {
         console.log("No token in response:", res.data);
-        alert("❌ No token received from server");
+        alert(" No token received from server");
       }
     } catch (err) {
       console.error("Register Error:", err);
@@ -54,12 +55,14 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-[#e3dac9]">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded shadow-md w-96"
+        className="bg-[#d1bea8] p-6 rounded shadow-md w-96"
       >
-        <h2 className="text-xl font-bold mb-4 text-center">Register</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center text-[#918151]">
+          Register
+        </h2>
 
         <input
           type="text"
@@ -67,7 +70,7 @@ const Register = () => {
           placeholder="Name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full border p-2 mb-3 rounded"
+          className="w-full border border-[#8a795d] bg-[#c3b091] rounded-md p-3 mb-3 text-[#8a795d] placeholder-[#8a795d]/60 focus:outline-none focus:ring-2 focus:ring-[#8a795d]"
           required
         />
 
@@ -77,7 +80,7 @@ const Register = () => {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full border p-2 mb-3 rounded"
+          className="w-full border border-[#8a795d] bg-[#c3b091] rounded-md p-3 mb-3 text-[#8a795d] placeholder-[#8a795d]/60 focus:outline-none focus:ring-2 focus:ring-[#8a795d]"
           required
         />
 
@@ -87,13 +90,13 @@ const Register = () => {
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
-          className="w-full border p-2 mb-4 rounded"
+          className="w-full border border-[#8a795d] bg-[#c3b091] rounded-md p-3 mb-3 text-[#8a795d] placeholder-[#8a795d]/60 focus:outline-none focus:ring-2 focus:ring-[#8a795d]"
           required
         />
 
         <button
           type="submit"
-          className="bg-green-600 text-white px-4 py-2 rounded w-full hover:bg-green-700 transition"
+          className="w-full bg-[#918151] border border-[#918151] font-serif px-4 py-2 rounded hover:bg-[#856d4d] hover:text-gray-200 text-white text-center transition duration-700 ease-in-out"
         >
           Register
         </button>

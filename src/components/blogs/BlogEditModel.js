@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/blog";
+const API_URL = "https://waqas-blog-app-backend.vercel.app/api/blog";
 
 const BlogEditModal = ({ blog, close, refresh }) => {
   const [form, setForm] = useState({
@@ -13,15 +13,11 @@ const BlogEditModal = ({ blog, close, refresh }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    await axios.put(
-      `${API_URL}/${blog._id}`, // ✅ Correct endpoint
-      form,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // if protected
-        },
-      }
-    );
+    await axios.put(`${API_URL}/${blog._id}`, form, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
     refresh();
     close();

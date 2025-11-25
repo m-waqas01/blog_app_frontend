@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import axiosInstance from "../../axiosInstance";
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const API_URL =
+  process.env.REACT_APP_API_BASE_URL ||
+  "https://waqas-blog-app-backend.vercel.app/api";
 const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dqd0zi2xd/upload";
 const CLOUDINARY_UPLOAD_PRESET = "mern-preset";
 
@@ -43,16 +46,11 @@ const BlogForm = ({ refresh }) => {
       }
 
       // Send blog data to backend
-      await axios.post(
-        `${API_URL}/blog`,
-        { title: form.title, content: form.content, image: imageUrl },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await axiosInstance.post(`${API_URL}/blog`, {
+        title: form.title,
+        content: form.content,
+        image: imageUrl,
+      });
 
       setSuccess("✅ Blog created successfully!");
       setForm({ title: "", content: "", image: "" });
